@@ -64,4 +64,9 @@ button:active {
   background-position: -5px -5px;
 }
 
+/* Button container for multiple buttons */
+.container a {
+  margin: 10px 0;
+}
+
 
