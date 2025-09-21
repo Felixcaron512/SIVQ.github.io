@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registre des serveurs inscrits SIVQ</title>
+  <link rel="icon" href="Elements/SIVQ.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Animation fade-out */
+    .fade-out {
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="banter-loader" class="banter-loader">
+  <div class="banter-loader__box"></div>
+  <div class="banter-loader__box"></div>
+  <div class="banter-loader__box"></div>
+  <div class="banter-loader__box"></div>
+  <div class="banter-loader__box"></div>
+  <div class="banter-loader__box"></div>
+  <div class="banter-loader__box"></div>
+  <div class="banter-loader__box"></div>
+  <div class="banter-loader__box"></div>
+</div>
+
+<!-- Contenu principal (caché au départ) -->
+<div id="display" style="display:none;">
+
+  <div style="display: flex; align-items: center; justify-content: center;">
+    <img src="Elements/SIVQ.png" alt="Logo" style="height: 40px; margin-right: 10px;">
+    <h1 style="margin: 20px;">Registre des serveurs inscrits SIVQ :</h1>
+  </div>
+
+  <select onchange="afficherSection(this.value)">
+    <option value="">-- Sélectionnez et affichez les informations --</option>
+    <option value="NTF">NTF Faction</option>
+    <option value="fruits">Fruits</option>
+    <option value="planetes">Planètes</option>
+  </select>
+
+  <section id="NTF" class="section" style="display:none;">
+    <h3>NTF Faction</h3>
+    <p>Lien du serveur Discord :</p>
+    <p>Code du jeu (Serveur privé Code):</p>
+    <p>NTF Faction est un serveur avec beaucoup d'action et une très bonne réputation en matière RP</p>
+    <br>
+    <h3>Fonctionnalités sur ce serveur :</h3>
+    <p>- L'application de gestion SIVQ (Reconnaisance des plaques) - Oui</p>
+    <p>- Serveur discord avec assistance - Oui</p>
+  </section>
+
+  <section id="fruits" class="section" style="display:none;">
+    <h3>🍓 Fruits</h3>
+    <p>Les pommes sont croquantes et sucrées.</p>
+    <p>Les bananes sont riches en potassium.</p>
+    <p>Les fraises sont juteuses et parfumées.</p>
+  </section>
+
+  <section id="planetes" class="section" style="display:none;">
+    <h3>🌍 Planètes</h3>
+    <p>La Terre est notre planète bleue.</p>
+    <p>Mars est connue comme la planète rouge.</p>
+    <p>Jupiter est la plus grande du système solaire.</p>
+  </section>
+
+  <footer class="footer-fixed">
+    <h4>Votre serveur n'est pas inscrit ?</h4>
+    <p1>Remplissez le formulaire en appuyant sur le bouton en dessous pour que nous puissions vous ajouter.</p1>
+    <br>
+    <a href="file:///C:/Users/fromh/OneDrive/Desktop/SIVQ/Site%20Web/Formulaires/Ajouter%20un%20serveur/formulaire_add_server.html">
+      <button>Remplissez le formulaire ici</button>
+    </a>
+  </footer>
+</div>
+
+<script>
+  function afficherSection(id) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => section.style.display = 'none');
+    if (id) {
+      document.getElementById(id).style.display = 'block';
+    }
+  }
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const loader = document.getElementById('banter-loader');
+      loader.classList.add('fade-out');
+
+      // Après la transition (1s), on le cache complètement et on affiche le contenu
+      setTimeout(() => {
+        loader.style.display = 'none';
+        document.getElementById('display').style.display = 'block';
+      }, 1000); // doit correspondre au "transition: 1s"
+    }, 3000); // garde le loader 3s avant fade-out
+  });
+</script>
+
+</body>
+</html>
