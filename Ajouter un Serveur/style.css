@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            max-width: 900px;
+            width: 100%;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .logo-section {
+            text-align: center;
+            padding-right: 40px;
+            border-right: 1px solid #e0e0e0;
+            width: 35%;
+        }
+
+        .logo-section img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        .logo-section h1 {
+            font-size: 2em;
+            margin: 10px 0;
+            color: #0084ff;
+        }
+
+        .logo-section p {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .quiz-section {
+            width: 65%;
+            padding-left: 40px;
+        }
+
+        .quiz-section h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .quiz-section p.intro {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .start-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .start-button:hover {
+            background-color: #0056b3;
+        }
+
+        .question-card {
+            display: none;
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .question-card h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .options-group label {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .options-group label:hover {
+            background-color: #e9ecef;
+            border-color: #007bff;
+        }
+
+        input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .navigation-buttons button {
+            background-color: #e0e0e0;
+            color: #555;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        
+        .navigation-buttons button:hover {
+            background-color: #c0c0c0;
+        }
+        
+        .navigation-buttons button#next-btn {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .navigation-buttons button#next-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .user-info-page, .thank-you-page {
+            display: none;
+        }
+
+        .user-info-page label, .user-info-page input {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .user-info-page input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+.logo {
+  width: 250px;
+  transform: translateX(-50px);
+  height: auto;
+
+}

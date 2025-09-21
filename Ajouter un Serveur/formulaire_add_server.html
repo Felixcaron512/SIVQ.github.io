@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>SIVQ - Ajouter un serveur</title>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Page mise en garde -->
+    <div id="warning-page">
+      <img class="logo" src="https://i.imgur.com/06jbFPA_d.webp?maxwidth=760&fidelity=grand" alt="Logo SIVQ" />
+      <h2>Mise en garde</h2>
+      <p>
+        Avant de continuer, veuillez lire attentivement :  
+        Après avoir rempli ce formulaire, notre équipe vous contactera sur Discord
+        pour avoir plus d'informations sur votre serveur et l’ajoutera sur la plateforme
+        de recherche SIVQ.
+      </p>
+      <div class="form-group">
+        <input type="checkbox" id="acceptWarning"> 
+        <label for="acceptWarning">J’ai lu et j’accepte la mise en garde</label>
+      </div>
+      <button class="start-button" onclick="acceptWarning()">Continuer</button>
+    </div>
+
+    <div class="logo-section" style="display:none;" id="logo-section">
+      <img src="https://i.imgur.com/06jbFPA_d.webp?maxwidth=760&fidelity=grand" alt="Logo SIVQ">
+      <h1>SIVQ</h1>
+    </div>
+
+    <div class="quiz-section" id="quiz-section" style="display:none;">
+
+      <div id="intro-page">
+        <h2>Formulaire d'adhésion d'un serveur sur la plateforme SIVQ</h2>
+        <p class="intro">Ce formulaire vous permettra d’inscrire votre serveur ERLC sur SIVQ.</p>
+        <button class="start-button" onclick="startQuiz()">Commencer le formulaire</button>
+      </div>
+
+      <!-- Page infos utilisateur -->
+      <div id="user-info-page" class="user-info-page" style="display:none;">
+        <h2>Informations personnelles</h2>
+        <p>Veuillez entrer vos informations avant de commencer.</p>
+  
+        <div class="form-group">
+          <label for="email">Adresse courriel :</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="discordPseudo">Pseudo Discord :</label>
+          <input type="text" id="discordPseudo" name="discordPseudo" required>
+        </div>
+  
+        <button class="start-button" onclick="showFirstQuestion()">Continuer</button>
+      </div>
+
+      <!-- Formulaire complet -->
+      <form id="quiz-form" action="https://formsubmit.co/fromhelix409@icloud.com" method="POST">
+        
+        <!-- Champs cachés pour infos -->
+        <input type="hidden" name="Adresse courriel" id="hiddenEmail">
+        <input type="hidden" name="Pseudo Discord" id="hiddenDiscordPseudo">
+
+        <!-- Question 1 -->
+        <div class="question-card" style="display:none;">
+          <h3>1. Quel est le nom de votre serveur ERLC ?</h3>
+          <input type="text" name="Nom du serveur" required>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-card" style="display:none;">
+          <h3>2. Quelle est l’adresse Discord de votre serveur ?</h3>
+          <input type="text" name="Discord du serveur" placeholder="ex: discord.gg/xxxx" required>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-card" style="display:none;">
+          <h3>3. Combien de membres compte actuellement votre serveur ?</h3>
+          <input type="number" name="Nombre de membres" min="1" required>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question-card" style="display:none;">
+          <h3>4. Votre serveur suit-il les règles officielles de ERLC ?</h3>
+          <label><input type="radio" name="Respect des règles" value="Oui" required> Oui</label><br>
+          <label><input type="radio" name="Respect des règles" value="Non"> Non</label>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question-card" style="display:none;">
+          <h3>5. Avez-vous une équipe de modération en place ?</h3>
+          <label><input type="radio" name="Équipe modération" value="Oui" required> Oui</label><br>
+          <label><input type="radio" name="Équipe modération" value="Non"> Non</label>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question-card" style="display:none;">
+          <h3>6. Veuillez décrire brièvement votre serveur et ce qui le rend unique :</h3>
+          <textarea name="Description du serveur" rows="4" required></textarea>
+        </div>
+
+        <!-- Navigation -->
+        <div id="nav-buttons" style="display:none;">
+          <button type="button" id="prev-btn" onclick="prevQuestion()">Précédent</button>
+          <button type="button" id="next-btn">Suivant</button>
+        </div>
+      </form>
+
+      <div id="thank-you-page" class="thank-you-page" style="display:none;">
+        <h2>Merci d'avoir complété le formulaire !</h2>
+        <p>Vos réponses ont été envoyées. Notre équipe vous contactera bientôt.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const quizForm = document.getElementById('quiz-form');
+    const introPage = document.getElementById('intro-page');
+    const userInfoPage = document.getElementById('user-info-page');
+    const questionCards = document.querySelectorAll('.question-card');
+    const navButtons = document.getElementById('nav-buttons');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const thankYouPage = document.getElementById('thank-you-page');
+    const warningPage = document.getElementById('warning-page');
+    const logoSection = document.getElementById('logo-section');
+    const quizSection = document.getElementById('quiz-section');
+
+    let currentQuestion = 0;
+
+    // Étape mise en garde
+    function acceptWarning() {
+      const checkbox = document.getElementById('acceptWarning');
+      if (!checkbox.checked) {
+        alert("Vous devez accepter la mise en garde avant de continuer.");
+        return;
+      }
+      warningPage.style.display = 'none';
+      logoSection.style.display = 'block';
+      quizSection.style.display = 'block';
+    }
+
+    function startQuiz() {
+      introPage.style.display = 'none';
+      userInfoPage.style.display = 'block';
+    }
+
+    function showFirstQuestion() {
+      const email = document.getElementById('email').value;
+      const discordPseudo = document.getElementById('discordPseudo').value;
+      
+      if (!email || !discordPseudo) {
+        alert('Veuillez remplir les deux champs.');
+        return;
+      }
+
+      document.getElementById('hiddenEmail').value = email;
+      document.getElementById('hiddenDiscordPseudo').value = discordPseudo;
+      
+      userInfoPage.style.display = 'none';
+      showQuestion(0);
+    }
+
+    function showQuestion(index) {
+      questionCards.forEach(card => card.style.display = 'none');
+      if (questionCards[index]) {
+        questionCards[index].style.display = 'block';
+      }
+      
+      navButtons.style.display = 'flex';
+      
+      if (index === 0) {
+        prevBtn.style.display = 'none';
+      } else {
+        prevBtn.style.display = 'block';
+      }
+      
+      if (index === questionCards.length - 1) {
+        nextBtn.innerText = 'Soumettre';
+        nextBtn.onclick = submitForm;
+      } else {
+        nextBtn.innerText = 'Suivant';
+        nextBtn.onclick = nextQuestion;
+      }
+
+      currentQuestion = index;
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < questionCards.length - 1) {
+        showQuestion(currentQuestion + 1);
+      }
+    }
+    
+    function prevQuestion() {
+      if (currentQuestion > 0) {
+        showQuestion(currentQuestion - 1);
+      }
+    }
+    
+    function submitForm() {
+      quizForm.submit();
+      quizForm.style.display = 'none';
+      navButtons.style.display = 'none';
+      thankYouPage.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
