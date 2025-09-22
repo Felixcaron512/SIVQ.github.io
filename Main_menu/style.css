@@ -56,7 +56,7 @@ button:active {
   flex-direction: column; /* aligne en colonne */
   justify-content: center; /* centre verticalement */
   align-items: center;     /* centre horizontalement */
-  height: 50vh;  
+  height: 70vh;  
   /* Add your background pattern here */
   background-color: #ffffff;
   background-image: radial-gradient(rgba(12, 12, 12, 0.171) 2px, transparent 0);
