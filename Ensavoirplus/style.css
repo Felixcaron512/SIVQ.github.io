@@ -29,3 +29,9 @@ body {
     color: #555;
     z-index: 999;
 }
+
+.plaques {
+  width: 300px;
+  height: auto;
+  margin-top: 20px;
+}
