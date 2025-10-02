@@ -34,5 +34,6 @@ body {
   width: 300px;
   height: auto;
   margin-top: 20px;
-  margin-bottom: 45px;
+  align-self: flex-start; /* dans un conteneur Flexbox */
+  margin-left: 0;
 }
