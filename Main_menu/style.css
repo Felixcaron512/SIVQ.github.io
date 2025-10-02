@@ -1,7 +1,18 @@
-body {
-  background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centre verticalement */
+  align-items: center;     /* centre horizontalement */
+  min-height: 100vh;       /* prend toute la hauteur de l'écran */
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .Titre {
